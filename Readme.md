@@ -69,9 +69,9 @@ Food Ordering: Customers can add food items to their ticket booking, track food 
 
 #### Endpoints
 
-*-POST /cinema/put:* Add or update a cinema.
+*- POST /cinema/put:* Add or update a cinema.
 JSON Example:
-
+```json
 {
   "cinemaid": 101,
   "name": "Regal Cinema",
@@ -80,13 +80,13 @@ JSON Example:
   "city": "Rampur",
   "state": "Karnataka"
 }
-
+```
 *- GET /cinema/all:* Get all cinemas.
 *- GET /cinema/{id}:* Get cinema by ID.
-*-GET /cinema/city/{cityname}:* Get cinemas by city.
-*-GET /cinema/state/{statename}:* Get cinemas by state.
-*-GET /cinema/statecity/{statename}/{cityname}:* Get cinemas by state and city.
-*-DELETE /cinema/delete/{id}:* Delete cinema by ID.
+*- GET /cinema/city/{cityname}:* Get cinemas by city.
+*- GET /cinema/state/{statename}:* Get cinemas by state.
+*- GET /cinema/statecity/{statename}/{cityname}:* Get cinemas by state and city.
+*- DELETE /cinema/delete/{id}:* Delete cinema by ID.
 
 ### Hall Controller
 
