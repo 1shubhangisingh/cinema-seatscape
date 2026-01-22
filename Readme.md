@@ -94,13 +94,13 @@ JSON Example:
 
 *-PUT /hall/create/{cinemaid}:* Create a hall for a cinema.
 JSON Example:
-
+```json
 {
   "hallid": 1,
   "hallname": "Hall 1",
   "totalSeats": 50
 }
-
+```
 *-GET /hall/getall:* Get all halls.
 *-GET /hall/get/{cinemaid}:* Get halls by cinema ID.
 
@@ -110,7 +110,7 @@ JSON Example:
 
 *-PUT /movie/put:* Add or update a movie.
 JSON Example:
-
+```json
 {
   "movieid": 1,
   "title": "Inception",
@@ -120,7 +120,7 @@ JSON Example:
   "lang": "English",
   "releasedate": "2010-07-16"
 }
-
+```
 *-GET /movie/getAll:* Get all movies.
 *-GET /movie/get/{id}:* Get movie by ID.
 *-GET /movie/get/duration/greater/{duration}:* Get movies with duration greater than a value.
@@ -136,7 +136,7 @@ JSON Example:
 
 *-PUT /food/add:* Add a new food item.
 JSON Example:
-
+```json
 {
   "id": 1,
   "name": "Popcorn",
@@ -144,7 +144,7 @@ JSON Example:
   "price": 150,
   "itemType": "Solid"
 }
-
+```
 *-GET /food/all:* Get all food items.
 *-GET /food/id/{id}:* Get food item by ID.
 
@@ -158,17 +158,17 @@ JSON Example:
 *-GET /foodorder/showid/{showid}:* Get food orders by show ID.
 *-PUT /foodorder/placeorder:* Place a food order.
 JSON Example:
-
+```json
 {
   "ticketId": 1,
   "items": [1],
   "totalPrice": 150,
   "paid": true
 }
-
+```
 *-DELETE /foodorder/cancel/{id}:* Cancel a food order by ID.
 JSON Example:
-
+```json
 {
   "id": 1,
   "ticketId": 1,
@@ -177,14 +177,14 @@ JSON Example:
   "paid": false,
   "status": "Cancelled"
 }
-
+```
 ### Show Controller
 
 #### Endpoints
 
 *-PUT /show/add:* Add a new show.
 JSON Example:
-
+```json
 {
   "cinemaId": 101,
   "hallId": 1011,
@@ -197,7 +197,7 @@ JSON Example:
   "startMin": 30,
   "bookedTickets": 5
 }
-
+```
 *-GET /show/all:* Get all shows.
 *-GET /show/id/{id}:* Get show by ID.
 *-GET /show/cid/{cinemaid}:* Get shows by cinema ID.
@@ -213,14 +213,14 @@ JSON Example:
 
 *=PUT /ticket/create:* Create a ticket.
 JSON Example:
-
+```json
 {
   "showId": 19,
   "numberOfSeats": 1,
   "bookedBy": "anki",
   "bookedSeats": 2
 }
-
+```
 *-GET /ticket/all:* Get all tickets.
 *-GET /ticket/show/{showid}:* Get tickets by show ID.
 *-GET /ticket/id/{ticketid}:* Get ticket by ticket ID.
@@ -228,7 +228,7 @@ JSON Example:
 *-GET /ticket/show/{showid}/availableseats:* Get available seats by show ID.
 *-DELETE /ticket/cancel/{id}:* Cancel a ticket by ID.
 JSON Example:
-
+```json
 {
   "ticket_id": 2,
   "booked_by": "anku",
@@ -236,7 +236,7 @@ JSON Example:
   "number_of_seats": 1,
   "show_id": 25
 }
-
+```
 ## Installation & Setup
 
 ### Prerequisites
