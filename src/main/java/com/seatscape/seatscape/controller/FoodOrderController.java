@@ -34,10 +34,10 @@ public class FoodOrderController {
         return foodOrderService.getFoodOrderById(id);
     }
 
-    @GetMapping("/show/{showId}")
-    public ResponseEntity<List<FoodOrder>> getFoodOrdersByShowId(@PathVariable("showId") Integer showId) {
-        return foodOrderService.getFoodOrdersByShowId(showId);
-    }
+    //@GetMapping("/show/{showId}")
+    //public ResponseEntity<List<FoodOrder>> getFoodOrdersByShowId(@PathVariable("showId") Integer showId) {
+        //return foodOrderService.getFoodOrdersByShowId(showId);
+    //}
 
     @PutMapping("/place")
     public ResponseEntity<FoodOrder> placeFoodOrder(@RequestBody FoodOrder foodOrder)

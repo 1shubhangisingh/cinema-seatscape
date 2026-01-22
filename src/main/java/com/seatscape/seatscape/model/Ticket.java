@@ -1,6 +1,7 @@
 package com.seatscape.seatscape.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import java.util.Arrays;
 
@@ -14,15 +15,17 @@ public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer ticketId;
-
+    @NotNull(message = "showId cannot be null")
     private Integer showId;
+    @NotNull(message = "numberOfSeats cannot be null")
     private Integer numberOfSeats;
+    
     private String bookedBy;
 
     @Column(name = "bookedseats")
-    private int[] bookedSeats;
+    private String bookedSeats;
 
-    public Ticket(Integer showId, Integer numberOfSeats, String bookedBy, int[] bookedSeats) {
+    public Ticket(Integer showId, Integer numberOfSeats, String bookedBy, String bookedSeats) {
         this.showId = showId;
         this.numberOfSeats = numberOfSeats;
         this.bookedBy = bookedBy;
@@ -36,7 +39,7 @@ public class Ticket {
                 ", showId=" + showId +
                 ", numberOfSeats=" + numberOfSeats +
                 ", bookedBy='" + bookedBy + '\'' +
-                ", bookedSeats=" + Arrays.toString(bookedSeats) +
+                ", bookedSeats=" + bookedSeats +
                 '}';
     }
 
@@ -73,11 +76,11 @@ public class Ticket {
         this.bookedBy = bookedBy;
     }
 
-    public int[] getBookedSeats() {
+    public String getBookedSeats() {
         return bookedSeats;
     }
 
-    public void setBookedSeats(int[] bookedSeats) {
+    public void setBookedSeats(String bookedSeats) {
         this.bookedSeats = bookedSeats;
     }
 }

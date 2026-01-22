@@ -6,12 +6,12 @@ import org.springframework.stereotype.Repository;
 
 import com.seatscape.seatscape.model.FoodOrder;
 
-import java.util.List;
+//import java.util.List;
 
 @Repository
 public interface FoodOrderDAO extends JpaRepository<FoodOrder, Integer> {
-    @Query(value = "SELECT * from foodorders f WHERE f.ticketid = :ticketId LIMIT 1", nativeQuery = true)
+    @Query(value = "SELECT * FROM foodorders f WHERE f.ticket_id = :ticketId LIMIT 1", nativeQuery = true)
     FoodOrder findByTicketId(Integer ticketId);
-    @Query(value = "SELECT * from foodorders f WHERE f.showid = :showId", nativeQuery = true)
-    List<FoodOrder> findByShowId(Integer showId);
+    //@Query(value = "SELECT * from foodorders f WHERE f.showid = :showId", nativeQuery = true)
+    //List<FoodOrder> findByShowId(Integer showId);
 }

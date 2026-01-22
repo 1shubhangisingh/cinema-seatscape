@@ -2,6 +2,8 @@ package com.seatscape.seatscape.service;
 
 import com.seatscape.seatscape.dao.ShowDAO;
 import com.seatscape.seatscape.model.Show;
+import com.seatscape.seatscape.model.ShowWrapper;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -123,6 +125,41 @@ public class ShowService {
                 List<Show> shows = showDAO.getShowsByCityAndMovieName(cityName, movieName);
                 return new ResponseEntity<>(shows, HttpStatus.OK);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(new ArrayList<>(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    
+    public ResponseEntity<List<ShowWrapper>> getAllShowsWrapped() {
+        try {
+            List<Show> shows = showDAO.findAll();
+            List<ShowWrapper> response = new ArrayList<>();
+
+            for (Show show : shows) {
+
+                ShowWrapper sw = new ShowWrapper();
+
+                sw.setShowId(show.getShowId());
+                sw.setCinemaId(show.getCinemaId());
+                sw.setHallId(show.getHallId());
+                sw.setMovieId(show.getMovieId());
+                sw.setAvailableSeats(show.getAvailableSeats());
+
+                if (show.getStartTime() != null) {
+                    LocalDateTime time = show.getStartTime().toLocalDateTime();
+
+                    sw.setStartYear(time.getYear());
+                    sw.setStartMonth(time.getMonthValue());
+                    sw.setStartDay(time.getDayOfMonth());
+                    sw.setStartHour(time.getHour());
+                    sw.setStartMin(time.getMinute());
+                }
+
+                response.add(sw);
+            }
+            return new ResponseEntity<>(response, HttpStatus.OK);
+
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(new ArrayList<>(), HttpStatus.INTERNAL_SERVER_ERROR);

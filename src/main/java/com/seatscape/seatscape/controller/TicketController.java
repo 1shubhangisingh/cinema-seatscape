@@ -3,6 +3,9 @@ package com.seatscape.seatscape.controller;
 import com.seatscape.seatscape.exceptions.*;
 import com.seatscape.seatscape.model.Ticket;
 import com.seatscape.seatscape.service.TicketService;
+
+import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,11 +19,14 @@ public class TicketController {
 
     @Autowired
     private TicketService ticketService;
-
+    
     @PutMapping("/create")
-    public ResponseEntity<Optional<Ticket>> createTicket(@RequestBody Ticket ticket)
-            throws HouseFullException, InsufficientTicketsException, SeatAlreadyBookedException,
-            CountMismatchException, CountOfSeatsZero, TooManySeatsException {
+    public ResponseEntity<Optional<Ticket>> createTicket(
+            @Valid @RequestBody Ticket ticket)
+            throws HouseFullException, InsufficientTicketsException,
+                   SeatAlreadyBookedException, CountMismatchException,
+                   CountOfSeatsZero, TooManySeatsException {
+
         return ticketService.createTicket(ticket);
     }
 

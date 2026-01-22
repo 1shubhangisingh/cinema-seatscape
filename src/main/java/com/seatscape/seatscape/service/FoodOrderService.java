@@ -44,14 +44,14 @@ public class FoodOrderService {
         }
     }
 
-    public ResponseEntity<List<FoodOrder>> getFoodOrdersByShowId(Integer showId) {
-        try {
-            return new ResponseEntity<>(foodOrderDAO.findByShowId(showId), HttpStatus.OK);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-    }
+    //public ResponseEntity<List<FoodOrder>> getFoodOrdersByShowId(Integer showId) {
+        //try {
+            //return new ResponseEntity<>(foodOrderDAO.findByShowId(showId), HttpStatus.OK);
+        //} catch (Exception e) {
+            //e.printStackTrace();
+            //return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        //}
+    //}
 
     public ResponseEntity<Optional<FoodOrder>> getFoodOrderByTicketId(Integer ticketId) {
         try {
@@ -65,22 +65,27 @@ public class FoodOrderService {
     public ResponseEntity<FoodOrder> placeFoodOrder(FoodOrder foodOrder)
             throws FoodOrderAlreadyExistsException, FoodOrderEmptyException, TicketDoesNotExistException {
 
-        if (foodOrder.getItems() == null || foodOrder.getItems().length == 0)
+        // Check if the food order is empty (using size() instead of length)
+        if (foodOrder.getItems() == null || foodOrder.getItems().size() == 0)
             throw new FoodOrderEmptyException("The items in your order are empty, please add some items and try again.");
 
+        // Check if the ticket ID exists
         if (ticketDAO.findById(foodOrder.getTicketId()).isEmpty())
             throw new TicketDoesNotExistException("The Ticket ID supplied is invalid, please check and retry.");
 
+        // Check if a food order already exists for the ticket ID
         if (foodOrderDAO.findByTicketId(foodOrder.getTicketId()) == null) {
             foodOrder.setPaid(false);
 
             int totalValue = 0;
+            // Calculate the total price based on item prices
             for (int itemId : foodOrder.getItems()) {
                 totalValue += foodItemService.getPriceForItem(itemId);
             }
             foodOrder.setTotalPrice(totalValue);
 
             try {
+                // Save the food order to the database
                 foodOrderDAO.save(foodOrder);
                 return new ResponseEntity<>(foodOrder, HttpStatus.OK);
             } catch (Exception e) {
@@ -91,5 +96,6 @@ public class FoodOrderService {
             throw new FoodOrderAlreadyExistsException(
                     "A Food Order already exists for this Ticket ID. As per policy, you can only place one order per ticket.");
         }
-    }
+    } 
+    
 }

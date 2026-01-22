@@ -15,15 +15,15 @@ import java.util.List;
 public interface TicketDAO extends JpaRepository<Ticket, Integer> {
 
     // Get all tickets by show ID
-    @Query(value = "SELECT * FROM tickets t WHERE t.showid = :showId", nativeQuery = true)
+    @Query(value = "SELECT * FROM tickets t WHERE t.show_id = :showId", nativeQuery = true)
     List<Ticket> getAllByShowId(@Param("showId") Integer showId);
 
     // Get a specific ticket by ticket ID
-    @Query(value = "SELECT * FROM tickets t WHERE t.ticketid = :ticketId", nativeQuery = true)
+    @Query(value = "SELECT * FROM tickets t WHERE t.ticket_id = :ticketId", nativeQuery = true)
     Ticket getTicketByTicketId(@Param("ticketId") Integer ticketId);
 
     // Get all tickets booked by a specific username
-    @Query(value = "SELECT * FROM tickets t WHERE t.bookedby = :username", nativeQuery = true)
+    @Query(value = "SELECT * FROM tickets t WHERE t.booked_by = :username", nativeQuery = true)
     List<Ticket> getTicketsByUsername(@Param("username") String username);
 
     // Update booked seats — ⚠️ better to handle as string or JSON in DB

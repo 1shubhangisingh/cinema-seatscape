@@ -1,13 +1,14 @@
 package com.seatscape.seatscape.controller;
 
 import com.seatscape.seatscape.model.Show;
+import com.seatscape.seatscape.model.ShowWrapper;
 import com.seatscape.seatscape.service.ShowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
+//import java.util.Optional;
 
 @RestController
 @RequestMapping("show")
@@ -61,5 +62,10 @@ public class ShowController {
             @PathVariable("cityName") String cityName,
             @PathVariable("movieName") String movieName) {
         return showService.getShowsByCityAndMovieName(cityName, movieName);
+    }
+    
+    @GetMapping("all/wrapped")
+    public ResponseEntity<List<ShowWrapper>> getAllShowsWrapped() {
+        return showService.getAllShowsWrapped();
     }
 }

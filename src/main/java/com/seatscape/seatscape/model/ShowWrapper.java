@@ -1,15 +1,16 @@
 package com.seatscape.seatscape.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+//import jakarta.persistence.Entity;
+//import jakarta.persistence.GeneratedValue;
+//import jakarta.persistence.GeneratedValue;
+//import jakarta.persistence.GenerationType;
+//import jakarta.persistence.Id;
 
-@Entity
+//@Entity
 public class ShowWrapper {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer showId;
 
     private Integer cinemaId;
@@ -22,26 +23,26 @@ public class ShowWrapper {
     private Integer startHour;
     private Integer startMin;
 
-    private String seats;
+    //private String seats;
 
-    // Default constructor
+    //Default constructor
     public ShowWrapper() {}
 
     // Full constructor
-    public ShowWrapper(Integer showId, Integer cinemaId, Integer hallId, Integer movieId, Integer availableSeats,
-                       Integer startYear, Integer startMonth, Integer startDay, Integer startHour, Integer startMin, String seats) {
-        this.showId = showId;
-        this.cinemaId = cinemaId;
-        this.hallId = hallId;
-        this.movieId = movieId;
-        this.availableSeats = availableSeats;
-        this.startYear = startYear;
-        this.startMonth = startMonth;
-        this.startDay = startDay;
-        this.startHour = startHour;
-        this.startMin = startMin;
-        this.seats = seats;
-    }
+   // public ShowWrapper(Integer showId, Integer cinemaId, Integer hallId, Integer movieId, Integer availableSeats,
+                       //Integer startYear, Integer startMonth, Integer startDay, Integer startHour, Integer startMin, String seats) {
+        //this.showId = showId;
+        //this.cinemaId = cinemaId;
+        //this.hallId = hallId;
+        //this.movieId = movieId;
+        //this.availableSeats = availableSeats;
+        //this.startYear = startYear;
+        //this.startMonth = startMonth;
+        //this.startDay = startDay;
+        //this.startHour = startHour;
+        //this.startMin = startMin;
+        //this.seats = seats;
+    //}
 
     // Getters and Setters
     public Integer getShowId() {
@@ -124,11 +125,11 @@ public class ShowWrapper {
         this.startMin = startMin;
     }
 
-    public String getSeats() {
-        return seats;
-    }
+ //   public String getSeats() {
+   //     return seats;
+    //}
 
-    public void setSeats(String seats) {
-        this.seats = seats;
-    }
+    //public void setSeats(String seats) {
+      //  this.seats = seats;
+    //}
 }

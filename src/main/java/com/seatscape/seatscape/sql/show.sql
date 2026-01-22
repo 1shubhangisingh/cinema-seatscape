@@ -1,9 +1,15 @@
-CREATE TABLE show
-(
-    showid integer NOT NULL,
-    cinemaid integer NULL,
-    hallid integer NULL,
-    movieid integer NULL,
-    availableseats integer NULL,
-    starttime timestamp without time zone NULL
-);
+@Entity
+@Table(name = "shows")
+public class Show {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer showid;
+
+    private Integer cinemaid;
+    private Integer hallid;
+    private Integer movieid;
+    private Integer availableseats;
+
+    private LocalDateTime starttime;
+}
