@@ -268,9 +268,7 @@ The application will be available on http://localhost:8084
 
 ### Postman Collection
 
-You can use Postman to test the API endpoints. Import the following Postman collection to interact with the API:
-
-Postman Collection
+You can use Postman to test the API endpoints. 
 
 ## Contributor
 
